@@ -1,10 +1,115 @@
 var rover = {
-  position: [5,5],//(x=rightToleft, y=upAndDown)
-  direction: "W",// using NESW
+  position: [5,0],//(x=rightToleft, y=upAndDown)
+  direction: "N",// using NESW
   rightOrLeft: "L",//using R or L
   backwardForward: "B"// using B or F
 };
-//ITERATION 2 (first part) BELOW: REFERS TO ROVER OBJECT ABOVE *****************
+//ITERATION 2 (COMPLETED)****************************
+function goForward(arr){
+  for(var i=0;i<arr.length;i++){
+    if(rover.direction ==="N"){
+      switch(arr[i]){
+      case 'F':
+        if(rover.position[1] === 9){
+          rover.position[1] = 0;
+        }else{
+      rover.position[1]++;
+        }
+      break;
+      case 'B':
+        if(rover.position[1] === 0){
+          rover.position[1] = 9;
+        }else{
+      rover.position[1]-- ;
+        }
+      break;
+      case "R":
+      rover.direction = "E";
+      break;
+      case "L":
+      rover.direction = "W";
+      break;
+      }//closes switch
+    }//closes if
+    else if(rover.direction ==="E"){
+      switch(arr[i]){
+        case 'F':
+          if(rover.position[0] === 9){
+          rover.position[0] = 0;
+        }else{
+        rover.position[0]++;
+        }
+        break;
+        case 'B':
+          if(rover.position[0] === 0){
+          rover.position[0] = 9;
+        }else{
+        rover.position[0]--;
+        }
+        break;
+        case "R":
+        rover.direction = "S";
+        break;
+        case "L":
+        rover.direction = "N";
+        break;
+      }//closes switch
+    }//closes if
+    else if(rover.direction ==="S"){
+      switch(arr[i]){
+        case 'F':
+          if(rover.position[1] === 0){
+          rover.position[1] = 9;
+          }else{
+        rover.position[1]--;
+          }
+        break;
+        case 'B':
+          if(rover.position[1] === 9){
+          rover.position[1] = 0;
+        }else{
+        rover.position[1]++;
+        }
+        break;
+        case "R":
+        rover.direction = "W";
+        break;
+        case "L":
+        rover.direction = "E";
+        break;
+      }//closes switch
+    }//closes if
+    else if(rover.direction ==="W"){
+      switch(arr[i]){
+        case 'F':
+          if(rover.position[0] === 0){
+          rover.position[0] = 9;
+          }else{
+        rover.position[0]--;
+          }
+        break;
+       case 'B':
+         if(rover.position[0] === 9){
+          rover.position[0] = 0;
+        }else{
+        rover.position[0]++;
+        }
+        break;
+        case "R":
+        rover.direction = "N";
+        break;
+        case "L":
+        rover.direction = "S";
+        break;
+    }//closes switch
+  }//closes if
+  }//closes the loop
+  console.log(["Ending Position:  " + rover.position, "Ending Direction:  " + rover.direction]);
+}//closes function
+goForward(["B","B"]);
+
+//ITERATION 2 (first part): REFERS TO ROVER OBJECT ABOVE *****************
+/*
 function goForward(arr){
   for(var i=0;i<arr.length;i++){
     if(rover.direction ==="N"){
@@ -75,7 +180,7 @@ function goForward(arr){
   return ["Ending Position:  " + rover.position, "Ending Direction:  " + rover.direction];
 }//closes function
 goForward(["F","B","L","F"]);//["F","F","R","L"] // expecting result of 4,4
-
+*/
 
 //ITERATION 1 BELOW: REFERS TO ROVER OBJECT ABOVE *****************************
 /*
